@@ -1,0 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800); /* use Manrope google font instead of Gilroy => needs liscence*/
+@import "tailwindcss";
+
+body {
+  font-family: "Manrope", sans-serif;
+}
+
+@theme {
+  --color-primary: var(--primary);
+}
+
+:root {
+  --primary: #4e2fd2;
+  
+}
+
+@layer components {
+  .selected-product {
+    @apply border-2 border-solid border-[#4E2FD2B2];
+  }
+}
