@@ -8,12 +8,27 @@
       "originalPrice": 27.98,
       "currentPrice": 23.98,
       "variants": [
-        { "id": "white", "label": "White", "swatch": "#f5f5f2" },
-        { "id": "black", "label": "Black", "swatch": "#2b2b2e" },
-        { "id": "grey", "label": "Tan", "swatch": "#cdb38b" }
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "#f5f5f2",
+          "image": "cam-v4-white.png"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "#2b2b2e",
+          "image": "cam-v4-black.png"
+        },
+        {
+          "id": "grey",
+          "label": "Grey",
+          "swatch": "#cdb38b",
+          "image": "cam-v4-grey.png"
+        }
       ],
       "defaultVariant": "white",
-      "seedQty": { "white": 1, "black": 3, "grey": 4 }
+      "seedQty": { "white": 4, "black": 3, "grey": 2 }
     },
     {
       "id": "cam-pan-v3",
@@ -24,8 +39,18 @@
       "currentPrice": 34.98,
 
       "variants": [
-        { "id": "white", "label": "White", "swatch": "#f5f5f2" },
-        { "id": "black", "label": "Black", "swatch": "#2b2b2e" }
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "#f5f5f2",
+          "image": "cam-v3-white.png"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "#2b2b2e",
+          "image": "cam-v3-black.png"
+        }
       ],
       "defaultVariant": "white",
       "seedQty": { "white": 2, "black": 0 }
@@ -37,9 +62,22 @@
       "image": "Wyze-Cam-Floodlight-v2.png",
       "originalPrice": null,
       "currentPrice": 89.98,
-      "variants": null,
-      "defaultVariant": null,
-      "seedQty": { "default": 0 }
+      "variants": [
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "#f5f5f2",
+          "image": "cam-v2-white.png"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "#2b2b2e",
+          "image": "cam-v2-black.png"
+        }
+      ],
+      "defaultVariant": "white",
+      "seedQty": { "white": 3, "black": 2 }
     },
     {
       "id": "duo-doorbell",
@@ -62,64 +100,65 @@
       "currentPrice": 89.98,
       "unit": null,
       "priceLabel": null,
+      "variants": [
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "#f5f5f2",
+          "image": "cam-pro-white.png"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "#2b2b2e",
+          "image": "cam-pro-black.png"
+        }
+      ],
+      "defaultVariant": "black",
+      "seedQty": { "white": 3, "black": 2 }
+    }
+  ],
+
+  "plans": [
+    {
+      "id": "cam-unlimited",
+      "title": "Cam Unlimited",
+      "description": "Unlimited cloud storage and smart alerts for every camera on your account.",
+      "image": "Cam-Unlimited.png",
+      "originalPrice": 19.99,
+      "currentPrice": 12.99,
+      "variants": null,
+      "defaultVariant": null,
+      "seedQty": { "default": 1 }
+    },
+    {
+      "id": "cam-basic",
+      "title": "Cam Basic",
+      "description": "14-day rolling storage for a single camera, motion and sound alerts included.",
+      "image": "Cam-Basic.png",
+      "originalPrice": 4.99,
+      "currentPrice": 2.99,
+      "variants": null,
+      "defaultVariant": null,
+      "seedQty": { "default": 0 }
+    },
+    {
+      "id": "no-plan",
+      "title": "No plan",
+      "description": "Skip cloud storage. You can always add a plan later from the app.",
+      "image": null,
+      "originalPrice": null,
+      "currentPrice": 0,
       "variants": null,
       "defaultVariant": null,
       "seedQty": { "default": 0 }
     }
   ],
 
-  "plans": {
-    "items": [
-      {
-        "id": "cam-unlimited",
-        "title": "Cam Unlimited",
-        "badge": null,
-        "description": "Unlimited cloud storage and smart alerts for every camera on your account.",
-        "image": "Cam-Unlimited.png",
-        "originalPrice": 19.99,
-        "currentPrice": 12.99,
-        "variants": null,
-        "defaultVariant": null,
-        "seedQty": { "default": 1 }
-      },
-      {
-        "id": "cam-basic",
-        "title": "Cam Basic",
-        "badge": null,
-        "description": "14-day rolling storage for a single camera, motion and sound alerts included.",
-        "image": "Cam-Basic.png",
-        "originalPrice": 4.99,
-        "currentPrice": 2.99,
-        "variants": null,
-        "defaultVariant": null,
-        "seedQty": { "default": 0 }
-      },
-      {
-        "id": "no-plan",
-        "title": "No plan",
-        "badge": null,
-        "description": "Skip cloud storage. You can always add a plan later from the app.",
-        "image": null,
-        "originalPrice": null,
-        "currentPrice": 0,
-        "variants": null,
-        "defaultVariant": null,
-        "seedQty": { "default": 0 }
-      }
-    ],
-    "shipping": {
-      "label": "Fast Shipping",
-      "originalPrice": 5.99,
-      "currentPrice": 0,
-      "priceLabel": "FREE"
-    }
-  },
-
   "sensors": [
     {
       "id": "sense-motion",
       "title": "Wyze Sense Motion Sensor",
-      "badge": null,
       "description": "Detects movement in a room and alerts you the moment something's off.",
       "learnMoreUrl": "#",
       "image": "Wyze-Sense-Motion-Sensor.png",
@@ -127,12 +166,11 @@
       "currentPrice": 9.99,
       "variants": null,
       "defaultVariant": null,
-      "seedQty": { "default": 2 }
+      "seedQty": { "default": 3 }
     },
     {
       "id": "sense-hub",
       "title": "Wyze Sense Hub (Required)",
-      "badge": null,
       "description": "The brains of your sensor system. Required to connect sensors to Wyze.",
       "learnMoreUrl": "#",
       "image": "Wyze-Sense-Hub.png",
@@ -140,7 +178,7 @@
       "currentPrice": 0,
       "variants": null,
       "defaultVariant": null,
-      "seedQty": { "default": 1 }
+      "seedQty": { "default": 4 }
     },
     {
       "id": "sense-contact",
@@ -149,17 +187,13 @@
       "image": "Wyze-Sense-Entry-Sensor.webp",
       "originalPrice": 12.99,
       "currentPrice": 9.99,
-      "variants": [
-        { "id": "white", "label": "White", "swatch": "#f5f5f2" },
-        { "id": "black", "label": "Black", "swatch": "#2b2b2e" }
-      ],
-      "defaultVariant": "white",
-      "seedQty": { "white": 0, "black": 0 }
+      "variants": null,
+      "defaultVariant": null,
+      "seedQty": { "default": 5 }
     },
     {
       "id": "sense-leak",
       "title": "Wyze Sense Leak Sensor",
-      "badge": null,
       "description": "Catches leaks early with a water sensor and probe for hard-to-reach spots.",
       "learnMoreUrl": "#",
       "image": "Wyze-Sense-Leak-Sensor.webp",
@@ -167,7 +201,7 @@
       "currentPrice": 19.99,
       "variants": null,
       "defaultVariant": null,
-      "seedQty": { "default": 0 }
+      "seedQty": { "default": 2 }
     }
   ],
 
@@ -181,7 +215,7 @@
       "currentPrice": 14.99,
       "variants": null,
       "defaultVariant": null,
-      "seedQty": { "default": 2 }
+      "seedQty": { "default": 3 }
     },
     {
       "id": "extended-warranty",
@@ -192,7 +226,7 @@
       "currentPrice": 24.99,
       "variants": null,
       "defaultVariant": null,
-      "seedQty": { "default": 0 }
+      "seedQty": { "default": 1 }
     },
     {
       "id": "window-decals",
@@ -203,7 +237,7 @@
       "currentPrice": 6.99,
       "variants": null,
       "defaultVariant": null,
-      "seedQty": { "default": 0 }
+      "seedQty": { "default": 1 }
     }
   ],
 
@@ -217,17 +251,20 @@
       {
         "title": "Choose your cameras",
         "category": "Cameras",
-        "nextLabel": "your sensors"
+        "nextLabel": "your sensors",
+        "nextName": "Sensors"
       },
       {
         "title": "Choose your sensors",
         "category": "Sensors",
-        "nextLabel": "your plan"
+        "nextLabel": "your plan",
+        "nextName": "Plans"
       },
       {
         "title": "Choose your plan",
-        "category": "Plan",
-        "nextLabel": "extra protection"
+        "category": "Plans",
+        "nextLabel": "extra protection",
+        "nextName": "Accessories"
       },
       {
         "title": "Add extra protection",
@@ -235,7 +272,11 @@
         "nextLabel": null
       }
     ]
+  },
+  "shipping": {
+    "label": "Fast Shipping",
+    "originalPrice": 5.99,
+    "currentPrice": 0,
+    "priceLabel": "FREE"
   }
 }
-
-
