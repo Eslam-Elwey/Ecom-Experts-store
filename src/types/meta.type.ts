@@ -2,6 +2,7 @@ export interface StepType {
   title: string;
   category: string;
   nextLabel: string;
+  nextName: string;
 }
 
 export interface GuaranteeType {
