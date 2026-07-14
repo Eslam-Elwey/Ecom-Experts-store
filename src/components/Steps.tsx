@@ -10,8 +10,9 @@ import StepInfo from "./StepInfo";
 
 export default function Steps() {
   const [meta, setMeta] = useState<null | MetaType>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
+  const [openName, setOpenName] = useState<string>('Cameras');
 
   useEffect(() => {
     async function fetchMeta() {
@@ -31,16 +32,16 @@ export default function Steps() {
     fetchMeta();
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (isLoading) return <p className="text-2xl h-96 flex items-center justify-center">Loading...</p>;
+  if (error) return <p className="text-red-500 text-[16px] my-4">{error}</p>;
 
   const stepsArr = meta?.steps.map((step, idx) => {
     switch (step.category) {
       case "Cameras":
-        return { ...step, index: idx + 1, icon: CameraIcon };
+        return { ...step, index: idx + 1, icon: CameraIcon, };
       case "Sensors":
         return { ...step, index: idx + 1, icon: SensorIcon };
-      case "Plan":
+      case "Plans":
         return { ...step, index: idx + 1, icon: PlanIcon };
       case "Accessories":
         return { ...step, index: idx + 1, icon: KeyPadIcon };
@@ -52,7 +53,7 @@ export default function Steps() {
   return (
     <ul>
       {stepsArr?.map((step) => (
-        <StepInfo step={step} totalSteps={stepsArr.length} key={step.index} />
+        <StepInfo step={step} totalSteps={stepsArr.length} key={step.index} openName={openName} setOpenName={setOpenName}  />
       ))}
     </ul>
   );
