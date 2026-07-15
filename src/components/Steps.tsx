@@ -19,7 +19,6 @@ export default function Steps() {
       try {
         setIsLoading(() => true);
         const data = await getMetaData();
-        console.log(data);
         setMeta(() => data);
       } catch (err) {
         setError(() => "Failed to fetch meta data...");
