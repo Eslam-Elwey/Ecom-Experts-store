@@ -2,6 +2,7 @@
   "cameras": [
     {
       "id": "cam-v4",
+      "category": "Cameras",
       "title": "Wyze Cam v4",
       "description": "The cleanest Wyze Cam ever made. See, hear, and speak to whoever's home, day or night.",
       "image": "Wyze-Cam-v4.png",
@@ -32,6 +33,7 @@
     },
     {
       "id": "cam-pan-v3",
+      "category": "Cameras",
       "title": "Wyze Cam Pan v3",
       "description": "360\u00b0 pan and 180\u00b0 tilt security camera that follows the action automatically.",
       "image": "Wyze-Cam-Pan-v3.png",
@@ -57,6 +59,7 @@
     },
     {
       "id": "floodlight-v2",
+      "category": "Cameras",
       "title": "Wyze Cam Floodlight v2",
       "description": "2K floodlight camera with a 360\u00b0 wide-angle view for your garage or driveway.",
       "image": "Wyze-Cam-Floodlight-v2.png",
@@ -81,6 +84,7 @@
     },
     {
       "id": "duo-doorbell",
+      "category": "Cameras",
       "title": "Wyze Duo Cam Doorbell",
       "description": "Two cameras. Two views. Double the porch protection, day and night.",
       "image": "Wyze-Duo-Cam-Doorbell.png",
@@ -89,10 +93,11 @@
 
       "variants": null,
       "defaultVariant": null,
-      "seedQty": { "default": 0 }
+      "seedQty": { "default": 2 }
     },
     {
       "id": "battery-cam-pro",
+      "category": "Cameras",
       "title": "Wyze Battery Cam Pro",
       "description": "Protect anywhere. See everything in 2.5K HDR. No power outlet or electrician needed.",
       "image": "Wyze-Battery-Cam-Pro.png",
@@ -122,6 +127,7 @@
   "plans": [
     {
       "id": "cam-unlimited",
+      "category": "Plans",
       "title": "Cam Unlimited",
       "description": "Unlimited cloud storage and smart alerts for every camera on your account.",
       "image": "Cam-Unlimited.png",
@@ -133,6 +139,7 @@
     },
     {
       "id": "cam-basic",
+      "category": "Plans",
       "title": "Cam Basic",
       "description": "14-day rolling storage for a single camera, motion and sound alerts included.",
       "image": "Cam-Basic.png",
@@ -144,6 +151,7 @@
     },
     {
       "id": "no-plan",
+      "category": "Plans",
       "title": "No plan",
       "description": "Skip cloud storage. You can always add a plan later from the app.",
       "image": null,
@@ -158,6 +166,7 @@
   "sensors": [
     {
       "id": "sense-motion",
+      "category": "Sensors",
       "title": "Wyze Sense Motion Sensor",
       "description": "Detects movement in a room and alerts you the moment something's off.",
       "learnMoreUrl": "#",
@@ -170,6 +179,7 @@
     },
     {
       "id": "sense-hub",
+      "category": "Sensors",
       "title": "Wyze Sense Hub (Required)",
       "description": "The brains of your sensor system. Required to connect sensors to Wyze.",
       "learnMoreUrl": "#",
@@ -182,6 +192,7 @@
     },
     {
       "id": "sense-contact",
+      "category": "Sensors",
       "title": "Wyze Sense Entry Sensor",
       "description": "Know the moment a door or window opens, even when you're away.",
       "image": "Wyze-Sense-Entry-Sensor.webp",
@@ -193,6 +204,7 @@
     },
     {
       "id": "sense-leak",
+      "category": "Sensors",
       "title": "Wyze Sense Leak Sensor",
       "description": "Catches leaks early with a water sensor and probe for hard-to-reach spots.",
       "learnMoreUrl": "#",
@@ -208,6 +220,7 @@
   "protections": [
     {
       "id": "microsd-256",
+      "category": "Accessories",
       "title": "Wyze MicroSD Card (256GB)",
       "description": "Local backup storage for your cameras, no subscription required.",
       "image": "Wyze-MicroSD-Card.png",
@@ -219,6 +232,7 @@
     },
     {
       "id": "extended-warranty",
+      "category": "Accessories",
       "title": "2-Year Extended Warranty",
       "description": "Covers accidental damage and defects on every device in your system.",
       "image": null,
@@ -230,6 +244,7 @@
     },
     {
       "id": "window-decals",
+      "category": "Accessories",
       "title": "Security Window Decals (4-Pack)",
       "description": "Visible deterrents that let would-be intruders know your home is protected.",
       "image": null,
