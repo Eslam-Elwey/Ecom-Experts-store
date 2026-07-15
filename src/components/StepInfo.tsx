@@ -5,6 +5,7 @@ import UpChevron from "../assets/icons/up-chevron.svg?react";
 import Products from "./Products";
 import { getCategoryProdcuts } from "../services/apiProducts";
 import type { ProductType } from "../types/product.type";
+import { useCart } from "../hooks/useCart";
 
 type SvgIcon = ComponentType<SVGProps<SVGSVGElement>>;
 type StepItem = StepType & { index: number; icon: SvgIcon };
@@ -26,13 +27,18 @@ export default function StepInfo({
   const [error, setError] = useState<null | string>(null);
   const isOpen = category === openName;
 
+  const { items } = useCart();
+
+  const selectedItems = items
+    .filter((item) => item.category === category)
+    .reduce((acc, curr) => acc + curr.quantity, 0);
+
   useEffect(() => {
     if (!isOpen || products) return;
     async function getProducts() {
       try {
         setIsLoading(() => true);
         const data = await getCategoryProdcuts(category);
-        console.log(data);
         setProducts(() => data);
       } catch (err) {
         setError(() => `Failed to fetch ${category} data...`);
@@ -74,7 +80,7 @@ export default function StepInfo({
 
           {/* selected item count and chveron  */}
           <div className="flex items-center text-[#4E2FD2] gap-1">
-            <span>2 selected</span>
+            {selectedItems ? <span>{selectedItems} selected</span> : null}
             <span
               onClick={() =>
                 setOpenName((prev) => (prev === category ? "" : category))
