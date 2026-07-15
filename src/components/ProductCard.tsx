@@ -3,43 +3,43 @@ import type { ProductType } from "../types/product.type";
 import Counter from "./Counter";
 import Vraiants from "./Vraiants";
 import { calcDiscount } from "../lib/helper";
+import { useCart } from "../hooks/useCart";
 
 export default function ProductCard({ item }: { item: ProductType }) {
   const [selectedVariant, setSelectedVariant] = useState(
     item.defaultVariant ?? "default",
   );
 
-  const [counts, setCounts] = useState<Record<string, number>>(() => {
-    return Object.keys(item.seedQty).reduce(
-      (acc, key) => {
-        acc[key] = 0; //will be stored value come from context
-        return acc;
-      },
-      {} as Record<string, number>,
-    );
-  });
+  const { addOrUpdateItem, getItemQuantity } = useCart();
 
-  const counter = counts[selectedVariant];
+  const counter = getItemQuantity(item.id, selectedVariant);
 
   const maxCount = item.seedQty[selectedVariant];
 
   const setItemCount: React.Dispatch<React.SetStateAction<number>> = (
     value,
   ) => {
-    setCounts((prev) => {
-      const current = prev[selectedVariant];
-      const next = typeof value === "function" ? value(current) : value;
-      return {
-        ...prev,
-        [selectedVariant]: next,
-      };
+    const current = getItemQuantity(item.id, selectedVariant);
+
+    const next = typeof value === "function" ? value(current) : value;
+
+    const variantIndex = item.variants?.findIndex((variant)=>variant.id === selectedVariant) ?? -1
+
+    addOrUpdateItem({
+      productId: item.id,
+      category: item.category,
+      variantId: selectedVariant,
+      quantity: next,
+      currentPrice: item.currentPrice,
+      originalPrice: item.originalPrice,
+      image: variantIndex === -1 ?item.image : item.variants?.[variantIndex].image  ,
+      title: item.title,
     });
   };
 
   return (
-    // todo: add border 2px color#4E2FD2B2 if this item is selected
     <li
-      className={`w-10/12 md:w-[calc(50%-0.5rem)] xl:w-[calc(20%-0.8rem)] bg-white flex flex-col md:flex-row xl:flex-col gap-4.75 justify-center items-center p-2.75 rounded-[10px] xl:px-2.75 xl:py-3.75`}
+      className={`${counter !== 0 ? "border-2 border-[#4E2FD2B2]" : ""} w-10/12 md:w-[calc(50%-0.5rem)] xl:w-[calc(20%-0.8rem)] bg-white flex flex-col md:flex-row xl:flex-col gap-4.75 justify-center items-center p-2.75 rounded-[10px] xl:px-2.75 xl:py-3.75`}
     >
       <div className="w-full grow relative">
         <img
