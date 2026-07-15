@@ -1,5 +1,6 @@
 export interface ProductType {
   id: string;
+  category: "Cameras" | "Sensors" | "Plans" | "Accessories";
   title: string;
   description: string;
   learnMoreUrl?: string;
