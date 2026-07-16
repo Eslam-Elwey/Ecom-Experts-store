@@ -259,7 +259,8 @@
   "meta": {
     "guarantee": {
       "title": "30-day hassle-free returns",
-      "description": "If you're not totally in love with the product, we will refund you 100%."
+      "description": "If you're not totally in love with the product, we will refund you 100%.",
+      "image": "satisfaction-badge.png"
     },
     "financing": "as low as $19.99/mo",
     "steps": [
