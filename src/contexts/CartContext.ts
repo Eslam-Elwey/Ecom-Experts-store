@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import type { CartItemType } from "../types/cartItem.type";
+import type { MetaType } from "../types/meta.type";
 
 type CartContextType = {
   items: CartItemType[];
@@ -12,6 +13,8 @@ type CartContextType = {
   subtotalBefore: number;
   subtotalAfter: number;
   savings: number;
+  meta: MetaType | null;
+  setMeta: React.Dispatch<React.SetStateAction<MetaType | null>>;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { CartItemType } from "../types/cartItem.type";
 import { CartContext } from "./CartContext";
+import type { MetaType } from "../types/meta.type";
 
 export default function CartContextProvider({
   children,
@@ -18,6 +19,8 @@ export default function CartContextProvider({
     const saved = localStorage.getItem("isSaved");
     return saved ? JSON.parse(saved) : false;
   });
+
+  const [meta, setMeta] = useState<null | MetaType>(null);
 
   const addOrUpdateItem = (item: CartItemType) => {
     setStoredItems((prev) => {
@@ -64,15 +67,20 @@ export default function CartContextProvider({
     setStoredItems(() => []);
   }
 
-  const subtotalBefore = storedItems.reduce(
-    (sum, item) =>
-      sum + (item.originalPrice ?? item.currentPrice) * item.quantity,
-    0,
+  const subtotalBefore = Number(
+    storedItems
+      .reduce(
+        (sum, item) =>
+          sum + (item.originalPrice ?? item.currentPrice) * item.quantity,
+        0,
+      )
+      .toFixed(2),
   );
 
-  const subtotalAfter = storedItems.reduce(
-    (sum, item) => sum + item.currentPrice * item.quantity,
-    0,
+  const subtotalAfter = Number(
+    storedItems
+      .reduce((sum, item) => sum + item.currentPrice * item.quantity, 0)
+      .toFixed(2),
   );
 
   const savings = subtotalBefore - subtotalAfter;
@@ -95,6 +103,8 @@ export default function CartContextProvider({
         savings,
         subtotalAfter,
         subtotalBefore,
+        meta,
+        setMeta,
       }}
     >
       {children}
