@@ -8,6 +8,8 @@ export interface StepType {
 export interface GuaranteeType {
   title: string;
   description: string;
+  image : string
+  
 }
 
 export interface MetaType {
