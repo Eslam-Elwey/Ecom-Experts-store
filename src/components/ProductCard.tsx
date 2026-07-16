@@ -23,7 +23,9 @@ export default function ProductCard({ item }: { item: ProductType }) {
 
     const next = typeof value === "function" ? value(current) : value;
 
-    const variantIndex = item.variants?.findIndex((variant)=>variant.id === selectedVariant) ?? -1
+    const variantIndex =
+      item.variants?.findIndex((variant) => variant.id === selectedVariant) ??
+      -1;
 
     addOrUpdateItem({
       productId: item.id,
@@ -32,27 +34,29 @@ export default function ProductCard({ item }: { item: ProductType }) {
       quantity: next,
       currentPrice: item.currentPrice,
       originalPrice: item.originalPrice,
-      image: variantIndex === -1 ?item.image : item.variants?.[variantIndex].image  ,
+      image:
+        variantIndex === -1 ? item.image : item.variants?.[variantIndex].image,
       title: item.title,
     });
   };
 
   return (
     <li
-      className={`${counter !== 0 ? "border-2 border-[#4E2FD2B2]" : ""} w-10/12 md:w-[calc(50%-0.5rem)] xl:w-[calc(20%-0.8rem)] bg-white flex flex-col md:flex-row xl:flex-col gap-4.75 justify-center items-center p-2.75 rounded-[10px] xl:px-2.75 xl:py-3.75`}
+      className={`${counter !== 0 ? "border-2 border-[#4E2FD2B2]" : ""} relative w-10/12 md:w-[calc(50%-0.5rem)] xl:w-[calc(20%-0.8rem)]
+         bg-white flex flex-col md:flex-row xl:flex-col gap-4.75 justify-center items-center p-2.75 rounded-[10px] xl:px-2.75 xl:py-3.75`}
     >
-      <div className="w-full grow relative">
+      {/* discount bedge */}
+      {item.originalPrice && item.originalPrice !== item.currentPrice && (
+        <span className="text-white bg-primary absolute top-[3%] left-1.25 px-1.5 py-0.5 rounded-full text-[12px] tracking-normal text-center font-semibold ">
+          Save {calcDiscount(item.originalPrice, item.currentPrice)}%
+        </span>
+      )}
+      <div className="w-full grow ">
         <img
           src={item.image ?? `default.png`}
           alt={item.title}
-          className="w-full h-50 md:h-37.75 xl:h-50 object-contain"
+          className="w-full"
         />
-        {/* discount bedge */}
-        {item.originalPrice && item.originalPrice !== item.currentPrice && (
-          <span className="text-white bg-primary absolute top-[-0.05%] -left-1.25 px-1.5 py-0.5 rounded-full text-[12px] tracking-normal text-center font-semibold ">
-            Save {calcDiscount(item.originalPrice, item.currentPrice)}%
-          </span>
-        )}
       </div>
 
       <div>
@@ -87,7 +91,9 @@ export default function ProductCard({ item }: { item: ProductType }) {
                 ${item.originalPrice}
               </span>
             )}
-            <span className="text-[#575757]">${item.currentPrice}</span>
+            <span className="text-[#575757]">
+              {item.currentPrice !== 0 ? `${item.currentPrice}` : "free"}
+            </span>
           </p>
         </div>
       </div>
