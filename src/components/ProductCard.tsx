@@ -4,6 +4,7 @@ import Counter from "./Counter";
 import Vraiants from "./Vraiants";
 import { calcDiscount } from "../lib/helper";
 import { useCart } from "../hooks/useCart";
+import Price from "./Price";
 
 export default function ProductCard({ item }: { item: ProductType }) {
   const [selectedVariant, setSelectedVariant] = useState(
@@ -19,25 +20,21 @@ export default function ProductCard({ item }: { item: ProductType }) {
   const setItemCount: React.Dispatch<React.SetStateAction<number>> = (
     value,
   ) => {
-    const current = getItemQuantity(item.id, selectedVariant);
+    const variant = item.variants?.find((v) => v.id === selectedVariant);
 
-    const next = typeof value === "function" ? value(current) : value;
-
-    const variantIndex =
-      item.variants?.findIndex((variant) => variant.id === selectedVariant) ??
-      -1;
-
-    addOrUpdateItem({
-      productId: item.id,
-      category: item.category,
-      variantId: selectedVariant,
-      quantity: next,
-      currentPrice: item.currentPrice,
-      originalPrice: item.originalPrice,
-      image:
-        variantIndex === -1 ? item.image : item.variants?.[variantIndex].image,
-      title: item.title,
-    });
+    addOrUpdateItem(
+      {
+        productId: item.id,
+        category: item.category,
+        variantId: selectedVariant,
+        currentPrice: item.currentPrice,
+        originalPrice: item.originalPrice,
+        image: variant?.image ?? item.image,
+        title: item.title,
+        maxNum: item.seedQty[selectedVariant],
+      },
+      value,
+    );
   };
 
   return (
@@ -85,16 +82,12 @@ export default function ProductCard({ item }: { item: ProductType }) {
           <Counter counter={counter} max={maxCount} setCount={setItemCount} />
 
           {/* price  original / current */}
-          <p className="text-[16px] tracking-[0.6px] gap-0.75 flex flex-row md:flex-col xl:flex-row">
-            {item.originalPrice && (
-              <span className="text-[#D8392B] line-through">
-                ${item.originalPrice}
-              </span>
-            )}
-            <span className="text-[#575757]">
-              {item.currentPrice !== 0 ? `${item.currentPrice}` : "free"}
-            </span>
-          </p>
+          <Price
+            currentPrice={item.currentPrice}
+            originalPrice={item.originalPrice}
+            key={item.id}
+            category={item.category}
+          />
         </div>
       </div>
     </li>

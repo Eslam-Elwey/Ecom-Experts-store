@@ -6,8 +6,10 @@ type CartContextType = {
   items: CartItemType[];
   setIsSaved: React.Dispatch<React.SetStateAction<boolean>>;
   isSaved: boolean;
-  addOrUpdateItem: (item: CartItemType) => void;
-  removeItem: (productId: string, variantId: string) => void;
+  addOrUpdateItem: (
+    item: Omit<CartItemType, "quantity">,
+    value: React.SetStateAction<number>,
+  ) => void;
   getItemQuantity: (productId: string, variantId: string) => number;
   clearAll: () => void;
   subtotalBefore: number;
@@ -15,6 +17,11 @@ type CartContextType = {
   savings: number;
   meta: MetaType | null;
   setMeta: React.Dispatch<React.SetStateAction<MetaType | null>>;
+  updateQuantity: (
+    productId: string,
+    variantId: string,
+    value: React.SetStateAction<number>,
+  ) => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);

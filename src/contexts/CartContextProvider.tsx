@@ -22,38 +22,70 @@ export default function CartContextProvider({
 
   const [meta, setMeta] = useState<null | MetaType>(null);
 
-  const addOrUpdateItem = (item: CartItemType) => {
+  const addOrUpdateItem = (
+    item: Omit<CartItemType, "quantity">,
+    value: React.SetStateAction<number>,
+  ) => {
     setStoredItems((prev) => {
-      const index = prev.findIndex((ele) => {
-        return (
-          ele.productId === item.productId && ele.variantId === item.variantId
-        );
-      });
+      const index = prev.findIndex(
+        (i) => i.productId === item.productId && i.variantId === item.variantId,
+      );
 
-      //creat new one
+      const current = index === -1 ? 0 : prev[index].quantity;
+
+      const next = typeof value === "function" ? value(current) : value;
+
       if (index === -1) {
-        return [...prev, item];
+        if (next <= 0) return prev;
+
+        return [
+          ...prev,
+          {
+            ...item,
+            quantity: next,
+          },
+        ];
       }
 
       const updated = [...prev];
 
       updated[index] = {
         ...updated[index],
-        quantity: item.quantity,
+        quantity: next,
       };
 
-      return updated.filter((item) => item.quantity > 0);
+      return updated.filter((i) => i.quantity > 0);
     });
   };
 
-  function removeItem(productId: string, variantId: string) {
-    setStoredItems((prev) =>
-      prev.filter(
-        (item) =>
-          !(item.productId === productId && item.variantId === variantId),
-      ),
-    );
-  }
+  const updateQuantity = (
+  productId: string,
+  variantId: string,
+  value: React.SetStateAction<number>,
+) => {
+  setStoredItems(prev =>
+    prev
+      .map(item => {
+        if (
+          item.productId !== productId ||
+          item.variantId !== variantId
+        ) {
+          return item;
+        }
+
+        const next =
+          typeof value === "function"
+            ? value(item.quantity)
+            : value;
+
+        return {
+          ...item,
+          quantity: next,
+        };
+      })
+      .filter(item => item.quantity > 0),
+  );
+};
 
   function getItemQuantity(productId: string, variantId: string) {
     return (
@@ -94,7 +126,7 @@ export default function CartContextProvider({
     <CartContext.Provider
       value={{
         addOrUpdateItem,
-        removeItem,
+        updateQuantity,
         getItemQuantity,
         clearAll,
         items: storedItems,
