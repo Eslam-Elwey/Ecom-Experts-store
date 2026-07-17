@@ -1,5 +1,6 @@
 import Checkout from "./Checkout";
 import Gurantee from "./Gurantee";
+import ReviewCart from "./ReviewCart";
 import Shipping from "./Shipping";
 
 export default function Review() {
@@ -23,6 +24,7 @@ export default function Review() {
               matters most safe.
             </p>
           </div>
+          <ReviewCart />
           <Shipping />
         </section>
 

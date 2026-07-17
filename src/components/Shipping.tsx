@@ -14,12 +14,12 @@ export default function Shipping() {
         </h4>
       </div>
       {/* price of shipping */}
-      <p className="flex xl:flex-row xl:gap-2.5">
+      <p className="flex xl:flex-row xl:gap-2.5 flex-col">
         <span className="text-[#6F7882] font-medium  text-12px md:text-[14px] xl:text-[16px] line-through">
           ${meta?.shipping.originalPrice}
         </span>
         <span className="text-primary font-semibold  text-12px md:text-[14px] xl:text-[16px]">
-          ${meta?.shipping.priceLabel}
+          {meta?.shipping.priceLabel}
         </span>
       </p>
     </div>
