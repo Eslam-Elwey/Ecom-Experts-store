@@ -6,10 +6,10 @@ export default function Checkout() {
 
   return (
     <div className=" ">
-      <p className="text-[#0AA288] text-[12px] xl:text-[14px] tracking-[-0.06px] text-center">
+      <p className="text-[#0AA288] text-[12px] xl:text-[14px] tracking-[-0.06px] text-center mb-1">
         Congrats! You’re saving ${savings} on your security bundle!
       </p>
-      <button className="w-full text-[17px] font-semibold bg-primary text-white py-3.25 px-4 rounded-sm">
+      <button className="w-full text-[17px] font-semibold bg-primary text-white py-3.25 px-4 rounded-sm mb-2">
         Checkout
       </button>
       <button
