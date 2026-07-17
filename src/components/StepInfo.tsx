@@ -75,11 +75,11 @@ export default function StepInfo({
           {/* icon and title  */}
           <div className="flex  items-center gap-2">
             <Icon className="text-[#6F7882] size-5 md:size-[21.13px] xl:size[24.375px]" />
-            <p className="font-semibold text-[18px] md:text-[22px]">{title}</p>
+            <p className="font-semibold text-[18px] lg:text-[22px] xl:text-[28px]">{title}</p>
           </div>
 
           {/* selected item count and chveron  */}
-          <div className="flex items-center text-[#4E2FD2] gap-1">
+          <div className="flex items-center text-[#4E2FD2] gap-1 text-[14px]">
             {selectedItems ? <span>{selectedItems} selected</span> : null}
             <span
               onClick={() =>

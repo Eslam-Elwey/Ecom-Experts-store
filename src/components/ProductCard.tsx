@@ -43,23 +43,23 @@ export default function ProductCard({ item }: { item: ProductType }) {
   return (
     <li
       className={`${counter !== 0 ? "border-2 border-[#4E2FD2B2]" : ""} relative w-10/12 md:w-[calc(50%-0.5rem)] xl:w-[calc(20%-0.8rem)]
-         bg-white flex flex-col md:flex-row xl:flex-col gap-4.75 justify-center items-center p-2.75 rounded-[10px] xl:px-2.75 xl:py-3.75`}
+         bg-white flex flex-col md:flex-row lg:flex-col xl:flex-col gap-4.75 justify-center items-center p-2.75 rounded-[10px] xl:px-2.75 xl:py-3.75`}
     >
       {/* discount bedge */}
       {item.originalPrice && item.originalPrice !== item.currentPrice && (
-        <span className="text-white bg-primary absolute top-[3%] left-1.25 px-1.5 py-0.5 rounded-full text-[12px] tracking-normal text-center font-semibold ">
+        <span className="text-white bg-primary absolute top-3.25 left-4.25 px-1.5 py-0.5 rounded-full text-[12px] tracking-normal text-center font-semibold ">
           Save {calcDiscount(item.originalPrice, item.currentPrice)}%
         </span>
       )}
-      <div className="w-full grow ">
+      <div className="w-3/4 ">
         <img
           src={item.image ?? `default.png`}
           alt={item.title}
-          className="w-full h-[150px] object-contain"
+          className="w-full h-full object-contain"
         />
       </div>
 
-      <div>
+      <div className="grow">
         <h3 className="font-semibold text-[16px] tracking-[0.6px] text-[#1F1F1F] ">
           {item.title}
         </h3>
