@@ -9,7 +9,7 @@ export default function StoreLayout() {
         <Steps />
       </div>
       {/* review section */}
-      <div className="md:w-85 md:shrink-0 xl:w-full">
+      <div className="lg:w-85 md:shrink-0 xl:w-full">
         <Review  />
       </div>
     </div>
