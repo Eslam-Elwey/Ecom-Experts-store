@@ -287,12 +287,12 @@
         "category": "Accessories",
         "nextLabel": null
       }
-    ]
-  },
-  "shipping": {
-    "label": "Fast Shipping",
-    "originalPrice": 5.99,
-    "currentPrice": 0,
-    "priceLabel": "FREE"
+    ],
+    "shipping": {
+      "label": "Fast Shipping",
+      "originalPrice": 5.99,
+      "currentPrice": 0,
+      "priceLabel": "FREE"
+    }
   }
 }
