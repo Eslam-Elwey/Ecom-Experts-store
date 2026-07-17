@@ -55,7 +55,7 @@ export default function ProductCard({ item }: { item: ProductType }) {
         <img
           src={item.image ?? `default.png`}
           alt={item.title}
-          className="w-full"
+          className="w-full h-[150px] object-contain"
         />
       </div>
 

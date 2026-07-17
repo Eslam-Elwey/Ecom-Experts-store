@@ -63,7 +63,7 @@ export default function StepInfo({
     <li
       className={`${isOpen ? "bg-[#EDF4FF] rounded-[10px] pt-3.75" : ""} mb-2 last:mb-0 md:mb-2`}
     >
-      <p className="text-left px-3.75 text-[#484848] text-[10px] md:text-[12px] font-medium leading-[100%] uppercase tracking-[1.6px] h-2.5 md:h-3 my-1.25 ">
+      <p className="text-left px-3.75 text-[#484848] text-[10px] md:text-[12px] font-medium leading-[100%] uppercase tracking-[1.6px] h-2.5 md:h-3 my-3.75 ">
         step {index} of {totalSteps}
       </p>
       {/* wrapper  */}
