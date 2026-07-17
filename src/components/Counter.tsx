@@ -11,7 +11,7 @@ export default function Counter({
   setCount: React.Dispatch<React.SetStateAction<number>>;
 }) {
   return (
-    <div className="flex gap-2.5 justify-center items-center py-2.5">
+    <div className="flex gap-2.5 justify-center items-center py-2.5 font-medium">
       <button
         onClick={() => setCount((val: number) => val - 1)}
         disabled={counter === 0}
